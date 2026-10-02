@@ -280,7 +280,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         <a href="#contacto" class="btn btn-ghost">Contactar</a>
       </div>
       <div class="hero-stats">
-        <div><b data-count="6">0</b><span>Dashboards</span></div>
+        <div><b data-count="7">0</b><span>Dashboards</span></div>
         <div><b data-count="3">0</b><span>Áreas</span></div>
         <div><b data-count="100" data-suffix="%">0</b><span>Interactivos</span></div>
       </div>
@@ -406,18 +406,27 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
    Si "url" está vacío, el visor muestra un aviso en lugar de cargar nada. */
 const CATEGORIES = ["Comercial","Finanzas","Talento Humano"];
 const PROJECTS = [
-  {id:"ventas",  name:"Panel de Ventas",          cat:"Comercial", url:"https://app.powerbi.com/view?r=eyJrIjoiM2E1MThjOTAtYjZiMC00MWUxLTg1OTItM2MxZDczNTJjYzM1IiwidCI6ImMxZmJhZTFlLTYzZTgtNGE3Yi05NjM1LWIxMTcwMzJhMDcyNiIsImMiOjR9", desc:"Seguimiento de ventas por región, vendedor y producto frente a metas.",
+  {id:"ventas-presupuesto", name:"Ventas y Presupuesto", cat:"Comercial", url:"https://app.powerbi.com/view?r=eyJrIjoiM2E1MThjOTAtYjZiMC00MWUxLTg1OTItM2MxZDczNTJjYzM1IiwidCI6ImMxZmJhZTFlLTYzZTgtNGE3Yi05NjM1LWIxMTcwMzJhMDcyNiIsImMiOjR9",
+   desc:"Seguimiento de ventas frente al presupuesto por región, vendedor y producto.",
    kpis:[["$2.4M","Ventas"],["112%","Cumpl."],["8.3K","Pedidos"]], viz:"bars", data:[40,62,48,78,66,90,74]},
-  {id:"clientes",name:"Análisis de Clientes",     cat:"Comercial", url:"", desc:"Segmentación, recurrencia y valor de vida de la base de clientes.",
-   kpis:[["1,240","Clientes"],["68%","Retención"],["$1.9K","Ticket"]], viz:"donut", data:[48,78]},
-  {id:"pyg",     name:"Estado de Resultados",     cat:"Finanzas",  url:"", desc:"Ingresos, costos y márgenes con comparativo mensual y acumulado.",
+  {id:"comercial-2024", name:"Tablero Comercial 2024", cat:"Comercial", url:"https://app.powerbi.com/view?r=eyJrIjoiOGUyNzU3NTItYTRhZS00ZDAwLWFjODYtMjdjNDc3ZmYxM2EwIiwidCI6ImM3YWJ1NjczLWRiY2UtNDU5Ni04M2QwLTBjMjF1ZTA2MGZkZSIsImMiOjR9",
+   desc:"Panorama comercial del año: ventas, clientes y desempeño mensual.",
+   kpis:[["$3.1M","Ventas"],["1,240","Clientes"],["+9%","vs. 2023"]], viz:"line"},
+  {id:"comercial-dataedu", name:"Tablero Comercial DataEdu", cat:"Comercial", url:"https://app.powerbi.com/view?r=eyJrIjoiMzk0ZGYxMzUtYzhiZC00MGM0LTgwYjItMzQyNWJ1ODNmMzQ0IiwidCI6ImM3YWJ1NjczLWRiY2UtNDU5Ni04M2QwLTBjMjF1ZTA2MGZkZSIsImMiOjR9",
+   desc:"Indicadores comerciales por producto, canal y periodo.",
+   kpis:[["$1.8M","Ventas"],["68%","Recompra"],["$1.9K","Ticket"]], viz:"donut", data:[48,78]},
+  {id:"juguetes", name:"Tablero Juguetes", cat:"Comercial", url:"https://app.powerbi.com/view?r=eyJrIjoiMTA0OTRmNTQtN2V1Ni00MzExLWJhZTEtM2RhZDk1NGE4YTFhIiwidCI6ImM3YWJ1NjczLWRiY2UtNDU5Ni04M2QwLTBjMjF1ZTA2MGZkZSIsImMiOjR9",
+   desc:"Análisis de ventas y rentabilidad por línea de producto de una juguetería.",
+   kpis:[["$950K","Ventas"],["42","Productos"],["31%","Margen"]], viz:"bars", data:[55,80,35,70,92,48,64]},
+  {id:"infografia-vendedores", name:"Infografía de Vendedores", cat:"Comercial", url:"https://app.powerbi.com/view?r=eyJrIjo2GUyNWQTFITnS00OGQ3LTk1ZjEtMjEtMyMzk2ZDAWYWViIiwidCI6ImM3YWJ1NjczLWRiY2UtNDU5Ni04M2QwLTBjMjF1ZTA2MGZkZSIsImMiOjR9",
+   desc:"Ranking y desempeño del equipo de ventas en formato infografía.",
+   kpis:[["24","Vendedores"],["96%","Meta"],["Top 5","Ranking"]], viz:"donut", data:[30,66]},
+  {id:"financiero", name:"Tablero Financiero", cat:"Finanzas", url:"https://app.powerbi.com/view?r=eyJrIjo1ZTMyMmNkMDAtMTDlMy00M2M2LWE0OTQtZD122jkxN2JkTB1IiwidCI6ImM3YWJ1NjczLWRiY2UtNDU5Ni04M2QwLTBjMjF1ZTA2MGZkZSIsImMiOjR9",
+   desc:"Ingresos, costos y márgenes con comparativo mensual y acumulado.",
    kpis:[["$5.1M","Ingresos"],["24%","Margen"],["+9%","vs. año ant."]], viz:"line"},
-  {id:"flujo",   name:"Flujo de Caja",            cat:"Finanzas",  url:"", desc:"Proyección de entradas y salidas de efectivo y posición de liquidez.",
-   kpis:[["$860K","Caja"],["4.2","Meses cob."],["-3%","Egresos"]], viz:"bars", data:[70,52,84,44,66,38,58]},
-  {id:"rotacion",name:"Rotación de Personal",     cat:"Talento Humano", url:"", desc:"Ingresos, retiros y causas de rotación por área y antigüedad.",
-   kpis:[["12.4%","Rotación"],["286","Empleados"],["3.1 a","Antigüedad"]], viz:"line"},
-  {id:"clima",   name:"Clima y Ausentismo",       cat:"Talento Humano", url:"", desc:"Indicadores de ausentismo, horas extra y percepción del equipo.",
-   kpis:[["3.8%","Ausent."],["4.2/5","Clima"],["92%","Capacit."]], viz:"donut", data:[35,70]}
+  {id:"rrhh-nomina", name:"RR.HH. y Nómina", cat:"Talento Humano", url:"https://app.powerbi.com/view?r=eyJrIjo1ZGMwMzQ2QTYtY2C0OCyzc0LWFmYTItZW0wNW1YTgx0IiwidCI6ImM3YWJ1NjczLWRiY2UtNDU5Ni04M2QwLTBjMjF1ZTA2MGZkZSIsImMiOjR9",
+   desc:"Plantilla, nómina y rotación del personal por área.",
+   kpis:[["286","Empleados"],["12.4%","Rotación"],["3.1 a","Antigüedad"]], viz:"bars", data:[60,45,72,50,85,40,66]}
 ];
 
 const $ = s => document.querySelector(s);
