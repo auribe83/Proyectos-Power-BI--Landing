@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ricky Automations · Portafolio de Dashboards Power BI</title>
+<meta name="description" content="Portafolio profesional de dashboards de Power BI: comercial, finanzas y talento humano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050506;
+  --bg-2:#0b0b0e;
+  --card:#101014;
+  --card-2:#15151a;
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.16);
+  --text:#f2f3f5;
+  --muted:#9a9ca6;
+  --silver:#c9ccd3;
+  --silver-hi:#ffffff;
+  --silver-lo:#6e717b;
+  --accent:#d8dbe2;
+  --radius:20px;
+  --ease:cubic-bezier(.22,.8,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:'Montserrat',system-ui,sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{width:min(1180px,100% - 48px);margin-inline:auto}
+section{padding:120px 0}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--silver-lo);font-weight:600;margin-bottom:18px;display:block}
+h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.silver-text{background:linear-gradient(180deg,#fff 0%,#a7aab3 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:620px;margin-top:18px;font-size:1.02rem}
+
+/* Buttons */
+.btn{
+  position:relative;display:inline-flex;align-items:center;gap:10px;
+  padding:14px 28px;border-radius:999px;font-weight:600;font-size:.88rem;letter-spacing:.02em;
+  overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .4s,border-color .4s,color .4s;
+}
+.btn .arr{transition:transform .4s var(--ease)}
+.btn:hover .arr{transform:translateX(5px)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-primary{background:linear-gradient(180deg,#f4f5f7,#b9bcc5);color:#0a0a0c;box-shadow:0 0 0 0 rgba(220,224,235,.0)}
+.btn-primary:hover{box-shadow:0 10px 40px -8px rgba(220,224,235,.45)}
+.btn-ghost{border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text)}
+.btn-ghost:hover{border-color:var(--silver);background:rgba(255,255,255,.08)}
+.btn:focus-visible,.chip:focus-visible,a:focus-visible{outline:2px solid var(--silver);outline-offset:3px}
+
+/* Header */
+header{position:fixed;top:14px;left:0;right:0;z-index:50}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px 12px 24px;border-radius:18px;
+  background:rgba(14,14,18,.65);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+.brand-mark{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 200deg,#fff,#7b7e88,#e8eaee,#5a5d66,#fff);box-shadow:inset 0 0 0 5px var(--bg-2)}
+.brand small{font-weight:400;color:var(--muted)}
+.links{display:flex;align-items:center;gap:30px;font-size:.84rem;color:var(--muted);font-weight:500}
+.links a:not(.btn){position:relative;transition:color .3s}
+.links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--silver);transition:width .4s var(--ease)}
+.links a:not(.btn):hover{color:var(--text)}
+.links a:not(.btn):hover::after{width:100%}
+.links .btn{padding:10px 20px}
+.burger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line-2)}
+.burger span{display:block;width:18px;height:2px;background:var(--text);margin:4px auto;transition:.3s}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:150px 0 90px;
+  background:radial-gradient(900px 500px at 78% 40%,rgba(160,165,180,.16),transparent 65%),radial-gradient(600px 400px at 10% 100%,rgba(120,125,140,.12),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,6vw,4.9rem);line-height:1.04;font-weight:700;letter-spacing:-.035em}
+.hero p{color:var(--muted);max-width:480px;margin:26px 0 38px;font-size:1.05rem}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:44px;margin-top:64px}
+.hero-stats b{display:block;font-size:1.8rem;font-weight:700;letter-spacing:-.02em}
+.hero-stats span{font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+/* Hero visual: stepped silver blocks + coin (CSS only) */
+.stage{position:relative;height:460px;perspective:1100px}
+.steps{position:absolute;inset:0;left:-12%;transform:rotateX(52deg) rotateZ(-38deg);transform-style:preserve-3d;top:40px}
+.block{
+  position:absolute;bottom:0;width:130px;border-radius:6px;
+  background:linear-gradient(135deg,#e9ebef 0%,#7d808a 40%,#2a2b31 100%);
+  box-shadow:-30px 30px 60px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.18);
+  animation:rise 1s var(--ease) both;
+}
+.block::before{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 2px,transparent 2px 9px)}
+.block.b1{left:2%;height:70px;animation-delay:.1s}
+.block.b2{left:30%;height:140px;animation-delay:.25s}
+.block.b3{left:58%;height:215px;animation-delay:.4s}
+.block.b4{left:86%;height:300px;animation-delay:.55s}
+@keyframes rise{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+.coin{
+  position:absolute;left:12%;top:18%;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle at 30% 28%,#fff,#b8bbc4 35%,#4d4f58 80%);
+  box-shadow:0 30px 50px rgba(0,0,0,.6),inset 0 0 0 6px rgba(255,255,255,.18),inset 0 0 0 14px rgba(0,0,0,.18);
+  display:grid;place-items:center;animation:float 6s ease-in-out infinite;
+}
+.coin svg{width:52px;height:52px;opacity:.65}
+@keyframes float{50%{transform:translateY(-16px) rotate(6deg)}}
+
+/* About */
+.about{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.pillars{display:grid;gap:16px}
+.pillar{padding:24px 26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);transition:transform .45s var(--ease),border-color .45s}
+.pillar:hover{transform:translateX(8px);border-color:var(--line-2)}
+.pillar h3{font-size:1rem;font-weight:600;margin-bottom:4px}
+.pillar p{font-size:.9rem;color:var(--muted)}
+
+/* Filters */
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:46px}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  padding:10px 22px;border-radius:999px;border:1px solid var(--line-2);color:var(--muted);
+  font-size:.82rem;font-weight:600;transition:all .35s var(--ease);
+}
+.chip:hover{color:var(--text);border-color:var(--silver);transform:translateY(-2px)}
+.chip[aria-pressed="true"]{background:linear-gradient(180deg,#f4f5f7,#b9bcc5);color:#0a0a0c;border-color:transparent}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px}
+.card{
+  display:flex;flex-direction:column;padding:26px;border-radius:var(--radius);
+  background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--line);
+  transition:transform .5s var(--ease),border-color .5s,box-shadow .5s;
+  animation:fadeUp .6s var(--ease) both;
+}
+.card:hover{transform:translateY(-8px);border-color:var(--line-2);box-shadow:0 30px 60px -25px rgba(200,205,220,.2)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.tag{align-self:flex-start;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--silver);border:1px solid var(--line-2);padding:5px 12px;border-radius:999px}
+.card h3{font-size:1.25rem;font-weight:700;margin:16px 0 8px;letter-spacing:-.01em}
+.card p{font-size:.9rem;color:var(--muted);flex:0}
+.viz{
+  height:132px;margin:22px 0;border-radius:14px;padding:16px;
+  background:#0a0a0d;border:1px solid var(--line);position:relative;overflow:hidden;
+}
+.viz::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.06) 50%,transparent 60%);transform:translateX(-100%);transition:transform .9s var(--ease)}
+.card:hover .viz::after{transform:translateX(100%)}
+/* bars */
+.v-bars{display:flex;align-items:flex-end;gap:9px;height:100%}
+.v-bars i{flex:1;height:var(--h);border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#e7e9ee,#5b5e68);transform-origin:bottom;animation:grow .9s var(--ease) both}
+.v-bars i:nth-child(even){opacity:.55}
+@keyframes grow{from{transform:scaleY(0)}}
+/* line */
+.v-line{height:100%;position:relative;background:repeating-linear-gradient(180deg,transparent 0 31px,var(--line) 31px 32px)}
+.v-line::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(220,224,235,.35),transparent);clip-path:polygon(0 85%,18% 62%,34% 70%,52% 38%,68% 48%,84% 18%,100% 28%,100% 100%,0 100%)}
+.v-line::after{content:"";position:absolute;inset:0;background:#e9ebef;clip-path:polygon(0 85%,18% 62%,34% 70%,52% 38%,68% 48%,84% 18%,100% 28%,100% 31%,84% 21%,68% 51%,52% 41%,34% 73%,18% 65%,0 88%)}
+/* donut */
+.v-donut{display:flex;align-items:center;gap:22px;height:100%}
+.donut{width:96px;height:96px;border-radius:50%;flex:none;background:conic-gradient(#f2f3f5 0 var(--a),#8d909a var(--a) var(--b),#3a3b42 var(--b) 100%);
+  -webkit-mask:radial-gradient(circle 28px,transparent 98%,#000 100%);mask:radial-gradient(circle 28px,transparent 98%,#000 100%)}
+.legend{display:grid;gap:8px;flex:1}
+.legend i{display:block;height:7px;border-radius:4px;background:var(--c);width:var(--w)}
+
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.kpi{padding:12px 10px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line);text-align:center}
+.kpi b{display:block;font-size:1.05rem;font-weight:700}
+.kpi span{font-size:.64rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.card .btn{margin-top:auto;justify-content:center}
+.empty{display:none;text-align:center;color:var(--muted);padding:60px 0}
+
+/* Viewer */
+.viewer-sec{background:var(--bg-2);border-block:1px solid var(--line)}
+.viewer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+.viewer-bar .actions{display:flex;gap:12px;flex-wrap:wrap}
+.viewer-meta h3{font-size:1.4rem;font-weight:700}
+.viewer-meta span{color:var(--muted);font-size:.88rem}
+.frame{
+  position:relative;width:100%;aspect-ratio:16/9;min-height:360px;border-radius:var(--radius);overflow:hidden;
+  background:#08080a;border:1px solid var(--line-2);
+}
+.frame:fullscreen{border-radius:0;border:0;aspect-ratio:auto}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.overlay{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:30px;background:#08080a;z-index:2}
+.overlay.on{display:flex}
+.spinner{width:46px;height:46px;border-radius:50%;border:3px solid var(--line-2);border-top-color:var(--silver-hi);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.overlay p{color:var(--muted);max-width:420px;font-size:.92rem}
+.placeholder-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;gap:10px;color:var(--muted);padding:30px}
+.placeholder-state svg{width:48px;height:48px;opacity:.5}
+.viewer-note{margin-top:14px;font-size:.78rem;color:var(--silver-lo)}
+
+/* Profile */
+.profile-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+.avatar{
+  aspect-ratio:4/5;border-radius:28px;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 30% 20%,#4a4c55,#15151a 60%);border:1px solid var(--line-2);
+  display:grid;place-items:center;
+}
+.avatar span{font-size:6rem;font-weight:800;letter-spacing:-.05em;background:linear-gradient(180deg,#fff,#555861);-webkit-background-clip:text;background-clip:text;color:transparent}
+.avatar::after{content:"Reemplaza por tu foto";position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-lo)}
+.skills{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0}
+.skills li{list-style:none;padding:8px 16px;border-radius:999px;border:1px solid var(--line-2);font-size:.8rem;font-weight:500;color:var(--silver);transition:all .3s}
+.skills li:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.timeline{display:grid;gap:16px;margin-top:10px}
+.tl{padding-left:22px;border-left:1px solid var(--line-2);position:relative}
+.tl::before{content:"";position:absolute;left:-4px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--silver)}
+.tl b{font-size:.95rem}.tl span{display:block;font-size:.85rem;color:var(--muted)}
+
+/* Contact */
+.contact{background:radial-gradient(700px 360px at 50% 0,rgba(170,175,190,.14),transparent 70%)}
+.contact-box{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:56px;border-radius:28px;border:1px solid var(--line-2);background:linear-gradient(180deg,var(--card-2),var(--card))}
+.contact-list{display:grid;gap:14px;margin-top:30px}
+.contact-list a{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;color:var(--silver);font-size:.92rem;transition:all .4s var(--ease)}
+.contact-list a:hover{border-color:var(--silver);transform:translateX(6px);background:rgba(255,255,255,.04)}
+form{display:grid;gap:14px}
+label{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+input,textarea{
+  width:100%;margin-top:8px;padding:14px 16px;border-radius:12px;border:1px solid var(--line-2);
+  background:#0a0a0d;color:var(--text);font:inherit;font-size:.92rem;transition:border-color .3s,box-shadow .3s;
+}
+input:focus,textarea:focus{outline:0;border-color:var(--silver);box-shadow:0 0 0 4px rgba(200,205,220,.1)}
+textarea{min-height:120px;resize:vertical}
+.form-ok{display:none;color:var(--silver);font-size:.88rem}
+
+footer{padding:36px 0;border-top:1px solid var(--line);color:var(--silver-lo);font-size:.8rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:960px){
+  section{padding:84px 0}
+  .hero .wrap,.about-grid,.profile-grid,.contact-box{grid-template-columns:1fr}
+  .stage{height:340px}.block{width:90px}
+  .contact-box{padding:30px;gap:40px}
+  .burger{display:block}
+  .links{position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:12px;border-radius:18px;background:rgba(14,14,18,.96);border:1px solid var(--line);display:none}
+  .links.open{display:flex}
+  .links a{padding:14px 12px}
+  .links a:not(.btn)::after{display:none}
+  .nav{position:relative}
+  .hero-stats{gap:28px}
+}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.wrap{width:calc(100% - 32px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav class="nav" aria-label="Principal">
+      <a href="#inicio" class="brand"><span class="brand-mark"></span>Ricky <small>Automations</small></a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+      <div class="links" id="links">
+        <a href="#portafolio">Proyectos</a>
+        <a href="#acerca">Acerca</a>
+        <a href="#perfil">Perfil</a>
+        <a href="#contacto" class="btn btn-primary">Contacto</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Portafolio de Power BI</span>
+      <h1>Datos que se <span class="silver-text">convierten en decisiones.</span></h1>
+      <p>Dashboards interactivos diseñados para leer el negocio de un vistazo: ventas, finanzas y talento humano en un solo lugar.</p>
+      <div class="hero-cta">
+        <a href="#portafolio" class="btn btn-primary">Ver proyectos <span class="arr">→</span></a>
+        <a href="#contacto" class="btn btn-ghost">Contactar</a>
+      </div>
+      <div class="hero-stats">
+        <div><b data-count="6">0</b><span>Dashboards</span></div>
+        <div><b data-count="3">0</b><span>Áreas</span></div>
+        <div><b data-count="100" data-suffix="%">0</b><span>Interactivos</span></div>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="steps">
+        <div class="block b1"></div><div class="block b2"></div><div class="block b3"></div><div class="block b4"></div>
+      </div>
+      <div class="coin"><svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0c" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACERCA -->
+<section class="about" id="acerca">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow">Sobre el portafolio</span>
+      <h2>Una muestra de <span class="silver-text">análisis aplicado.</span></h2>
+      <p class="lead">Esta página reúne los dashboards que he construido en Power BI. Cada proyecto parte de una pregunta de negocio, pasa por el modelado y limpieza de datos, y termina en un reporte claro y navegable. Explora cada uno en vivo.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar"><h3>Modelado de datos</h3><p>Relaciones, medidas DAX y transformaciones en Power Query pensadas para escalar.</p></div>
+      <div class="pillar"><h3>Diseño visual claro</h3><p>Jerarquía, color y navegación que facilitan la lectura de indicadores.</p></div>
+      <div class="pillar"><h3>Automatización</h3><p>Actualización programada y procesos que reducen trabajo manual.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <div>
+        <span class="eyebrow">Galería</span>
+        <h2>Proyectos <span class="silver-text">destacados</span></h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar por categoría" id="filters"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty">No hay proyectos en esta categoría.</p>
+  </div>
+</section>
+
+<!-- PROYECTO SELECCIONADO -->
+<section class="viewer-sec" id="seleccionado">
+  <div class="wrap">
+    <div class="viewer-bar">
+      <div class="viewer-meta">
+        <span class="eyebrow" style="margin-bottom:8px">Proyecto seleccionado</span>
+        <h3 id="vTitle">Ningún dashboard seleccionado</h3>
+        <span id="vCat">Elige un proyecto de la galería para cargarlo aquí.</span>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost" id="btnFull" disabled>⛶ Ver en pantalla completa</button>
+        <button class="btn btn-primary" id="btnBack">← Volver a los proyectos</button>
+      </div>
+    </div>
+    <div class="frame" id="frame">
+      <div class="overlay" id="loader" role="status" aria-live="polite">
+        <div class="spinner"></div><p>Cargando dashboard…</p>
+      </div>
+      <div class="placeholder-state" id="idle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 14v-3M12 14V8M17 14v-5"/></svg>
+        <p>El visor está vacío. Solo se carga un reporte a la vez.</p>
+      </div>
+    </div>
+    <p class="viewer-note">Solo se mantiene un iframe activo; al cambiar de proyecto o volver, el anterior se descarga.</p>
+  </div>
+</section>
+
+<!-- PERFIL -->
+<section id="perfil">
+  <div class="wrap profile-grid">
+    <div class="avatar reveal"><span>RA</span></div>
+    <div class="reveal">
+      <span class="eyebrow">Perfil profesional</span>
+      <h2>Analista de datos <span class="silver-text">y desarrollador de BI.</span></h2>
+      <p class="lead">Transformo datos dispersos en reportes que las áreas comerciales, financieras y de talento humano pueden usar todos los días. Me enfoco en que cada indicador responda una decisión concreta.</p>
+      <ul class="skills">
+        <li>Power BI</li><li>DAX</li><li>Power Query</li><li>SQL</li><li>Excel avanzado</li><li>Modelado dimensional</li><li>Automatización</li>
+      </ul>
+      <div class="timeline">
+        <div class="tl"><b>Experiencia</b><span>Describe aquí tus años de experiencia y sectores.</span></div>
+        <div class="tl"><b>Formación</b><span>Añade tu formación y certificaciones (p. ej. PL-300).</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div>
+        <span class="eyebrow">Contacto</span>
+        <h2>Conversemos sobre <span class="silver-text">tus datos.</span></h2>
+        <p class="lead">¿Te interesa alguno de los dashboards o quieres comentar un caso? Escríbeme.</p>
+        <div class="contact-list">
+          <a href="mailto:hola@rickyautomations.com">✉ hola@rickyautomations.com</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">in LinkedIn</a>
+          <a href="https://wa.me/570000000000" target="_blank" rel="noopener">☏ WhatsApp</a>
+        </div>
+      </div>
+      <form id="form" novalidate>
+        <div><label for="n">Nombre</label><input id="n" name="n" required autocomplete="name"></div>
+        <div><label for="e">Correo</label><input id="e" name="e" type="email" required autocomplete="email"></div>
+        <div><label for="m">Mensaje</label><textarea id="m" name="m" required></textarea></div>
+        <button class="btn btn-primary" type="submit" style="justify-content:center">Enviar mensaje <span class="arr">→</span></button>
+        <p class="form-ok" id="ok" role="status">Se abrirá tu cliente de correo para enviar el mensaje.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Ricky Automations</span><span>Portafolio de dashboards Power BI</span></div></footer>
+
+<script>
+/* ============ CONFIGURACIÓN ============
+   Pega en "url" el enlace de publicación/embed de cada reporte de Power BI
+   (Archivo → Insertar informe → Publicar en la web, o URL de embed segura).
+   Si "url" está vacío, el visor muestra un aviso en lugar de cargar nada. */
+const CATEGORIES = ["Comercial","Finanzas","Talento Humano"];
+const PROJECTS = [
+  {id:"ventas",  name:"Panel de Ventas",          cat:"Comercial", url:"", desc:"Seguimiento de ventas por región, vendedor y producto frente a metas.",
+   kpis:[["$2.4M","Ventas"],["112%","Cumpl."],["8.3K","Pedidos"]], viz:"bars", data:[40,62,48,78,66,90,74]},
+  {id:"clientes",name:"Análisis de Clientes",     cat:"Comercial", url:"", desc:"Segmentación, recurrencia y valor de vida de la base de clientes.",
+   kpis:[["1,240","Clientes"],["68%","Retención"],["$1.9K","Ticket"]], viz:"donut", data:[48,78]},
+  {id:"pyg",     name:"Estado de Resultados",     cat:"Finanzas",  url:"", desc:"Ingresos, costos y márgenes con comparativo mensual y acumulado.",
+   kpis:[["$5.1M","Ingresos"],["24%","Margen"],["+9%","vs. año ant."]], viz:"line"},
+  {id:"flujo",   name:"Flujo de Caja",            cat:"Finanzas",  url:"", desc:"Proyección de entradas y salidas de efectivo y posición de liquidez.",
+   kpis:[["$860K","Caja"],["4.2","Meses cob."],["-3%","Egresos"]], viz:"bars", data:[70,52,84,44,66,38,58]},
+  {id:"rotacion",name:"Rotación de Personal",     cat:"Talento Humano", url:"", desc:"Ingresos, retiros y causas de rotación por área y antigüedad.",
+   kpis:[["12.4%","Rotación"],["286","Empleados"],["3.1 a","Antigüedad"]], viz:"line"},
+  {id:"clima",   name:"Clima y Ausentismo",       cat:"Talento Humano", url:"", desc:"Indicadores de ausentismo, horas extra y percepción del equipo.",
+   kpis:[["3.8%","Ausent."],["4.2/5","Clima"],["92%","Capacit."]], viz:"donut", data:[35,70]}
+];
+
+const $ = s => document.querySelector(s);
+const grid = $('#grid'), filtersEl = $('#filters');
+
+/* ----- Representaciones gráficas en CSS ----- */
+function vizHTML(p){
+  if(p.viz==="bars") return `<div class="v-bars">${p.data.map((h,i)=>`<i style="--h:${h}%;animation-delay:${i*70}ms"></i>`).join("")}</div>`;
+  if(p.viz==="donut") return `<div class="v-donut"><div class="donut" style="--a:${p.data[0]}%;--b:${p.data[1]}%"></div>
+    <div class="legend"><i style="--c:#f2f3f5;--w:${p.data[0]+20}%"></i><i style="--c:#8d909a;--w:${p.data[1]-p.data[0]+30}%"></i><i style="--c:#3a3b42;--w:55%"></i></div></div>`;
+  return `<div class="v-line"></div>`;
+}
+
+/* ----- Filtros y tarjetas ----- */
+let activeCat = "Todos";
+["Todos",...CATEGORIES].forEach(c=>{
+  const b=document.createElement('button');
+  b.className='chip';b.textContent=c;b.setAttribute('aria-pressed',c===activeCat);
+  b.onclick=()=>{activeCat=c;[...filtersEl.children].forEach(x=>x.setAttribute('aria-pressed',x===b));render();};
+  filtersEl.appendChild(b);
+});
+
+function render(){
+  const list = PROJECTS.filter(p=>activeCat==="Todos"||p.cat===activeCat);
+  grid.innerHTML = list.map((p,i)=>`
+    <article class="card" style="animation-delay:${i*70}ms">
+      <span class="tag">${p.cat}</span>
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <div class="viz" aria-hidden="true">${vizHTML(p)}</div>
+      <div class="kpis">${p.kpis.map(k=>`<div class="kpi"><b>${k[0]}</b><span>${k[1]}</span></div>`).join("")}</div>
+      <button class="btn btn-ghost" data-id="${p.id}">Explorar dashboard <span class="arr">→</span></button>
+    </article>`).join("");
+  $('#empty').style.display = list.length?'none':'block';
+}
+grid.addEventListener('click',e=>{
+  const b=e.target.closest('button[data-id]'); if(b) openProject(b.dataset.id);
+});
+render();
+
+/* ----- Visor: un solo iframe dinámico ----- */
+const frame=$('#frame'), loader=$('#loader'), idle=$('#idle'), btnFull=$('#btnFull');
+let currentFrame=null, loadTimer=null;
+
+function clearViewer(){
+  clearTimeout(loadTimer);
+  if(currentFrame){currentFrame.src='about:blank';currentFrame.remove();currentFrame=null;}
+  frame.querySelectorAll('.notice').forEach(n=>n.remove());
+  loader.classList.remove('on');
+}
+function openProject(id){
+  const p=PROJECTS.find(x=>x.id===id); if(!p) return;
+  clearViewer();
+  $('#vTitle').textContent=p.name;
+  $('#vCat').textContent=p.cat+" · "+p.desc;
+  idle.style.display='none';
+  document.getElementById('seleccionado').scrollIntoView({behavior:'smooth'});
+  if(!p.url){
+    const n=document.createElement('div');n.className='placeholder-state notice';
+    n.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><p><b>Enlace pendiente</b></p><p>Agrega la URL de Power BI de este proyecto en la lista PROJECTS del código.</p>';
+    frame.appendChild(n);btnFull.disabled=true;return;
+  }
+  loader.classList.add('on');btnFull.disabled=false;
+  const f=document.createElement('iframe');
+  f.title="Dashboard: "+p.name;f.allowFullscreen=true;f.referrerPolicy="no-referrer";
+  f.onload=()=>{clearTimeout(loadTimer);loader.classList.remove('on');};
+  f.src=p.url;frame.appendChild(f);currentFrame=f;
+  loadTimer=setTimeout(()=>loader.classList.remove('on'),15000);
+}
+function backToProjects(){
+  clearViewer();
+  if(document.fullscreenElement) document.exitFullscreen();
+  $('#vTitle').textContent='Ningún dashboard seleccionado';
+  $('#vCat').textContent='Elige un proyecto de la galería para cargarlo aquí.';
+  idle.style.display='flex';btnFull.disabled=true;
+  document.getElementById('portafolio').scrollIntoView({behavior:'smooth'});
+}
+$('#btnBack').onclick=backToProjects;
+btnFull.onclick=()=>{ if(frame.requestFullscreen) frame.requestFullscreen(); };
+btnFull.disabled=true;
+
+/* ----- Navegación móvil ----- */
+const burger=$('#burger'), links=$('#links');
+burger.onclick=()=>{const o=links.classList.toggle('open');burger.setAttribute('aria-expanded',o);};
+links.addEventListener('click',e=>{if(e.target.closest('a')){links.classList.remove('open');burger.setAttribute('aria-expanded',false);}});
+
+/* ----- Revelado al hacer scroll + contadores ----- */
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const t=+el.dataset.count,s=el.dataset.suffix||'';let v=0;
+  const step=()=>{v+=Math.max(1,t/40);if(v>=t){el.textContent=t+s;return;}el.textContent=Math.floor(v)+s;requestAnimationFrame(step);};
+  step();
+});
+
+/* ----- Contacto (abre cliente de correo) ----- */
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target;
+  if(!f.n.value.trim()||!/^\S+@\S+\.\S+$/.test(f.e.value)||!f.m.value.trim()){f.reportValidity?.();$('#ok').style.display='block';$('#ok').textContent='Completa nombre, un correo válido y mensaje.';return;}
+  $('#ok').style.display='block';$('#ok').textContent='Se abrirá tu cliente de correo para enviar el mensaje.';
+  location.href=`mailto:hola@rickyautomations.com?subject=${encodeURIComponent('Contacto portafolio - '+f.n.value)}&body=${encodeURIComponent(f.m.value+'\n\n'+f.n.value+' ('+f.e.value+')')}`;
+});
+$('#yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
